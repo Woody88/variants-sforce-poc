@@ -96,6 +96,12 @@ instance hasSObjectNetwork :: HasNetwork Effect (SObjectEndpoint t r) where
         let url = baseUrl Connection sfapi
         pure $ Right responseFromSFDCSObject
 
+
+
+main :: Effect Unit
+main = do 
+    void $ request $ Query queryAccount
+
 responseFromSFDC :: forall r. r 
 responseFromSFDC = unsafeCoerce $ { name: "SFDC Account" }
 
@@ -103,36 +109,8 @@ responseFromSFDCSObject :: forall r. r
 responseFromSFDCSObject = unsafeCoerce $ {}
 
 
-main :: Effect Unit
-main = do 
-    void $ request $ Query queryAccount
- 
-
 queryAccount :: SOQL Account 
 queryAccount = SOQL "Select name from Account"
 
 updateAccount :: SObject Account Unit
 updateAccount = SObject { name: "Account" }  
-
--- f :: RowToList _ _ 
---         => VariantMatchCases _ _ (Effect (Either _ Account))
---         => Union _ _ _
---         => HasEndpoint (QueryEndpoint Account) Account
---         => (QueryEndpoint Account)
---         -> Effect (Either _ Account)
--- f = request $ Query queryAccount
-
--- request' :: forall result sfapi m r. 
---     HasEndpoint sfapi result
---     => HasNetwork m sfapi 
---     => sfapi 
---     -> ExceptV (RequestError sfapi r) m result
--- request' api = do 
---     eitherResult <- request api 
-    
---     case eitherResult of 
---         Left e -> ExceptT $ pure $ Left $ requestServerError "server error"
---         Right result -> ExceptT $ pure $ Right result
-
-
-
