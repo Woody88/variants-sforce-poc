@@ -106,7 +106,7 @@ responseFromSFDCSObject = unsafeCoerce $ {}
 main :: Effect Unit
 main = do 
     void $ request $ Query queryAccount
-    pure unit
+ 
 
 queryAccount :: SOQL Account 
 queryAccount = SOQL "Select name from Account"
