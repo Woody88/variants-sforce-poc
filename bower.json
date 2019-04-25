@@ -1,0 +1,24 @@
+{
+  "name": "variants",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-prelude": "^4.1.1",
+    "purescript-console": "^4.2.0",
+    "purescript-effect": "^2.0.1",
+    "purescript-checked-exceptions": "^2.0.0",
+    "purescript-variant": "^6.0.0",
+    "purescript-typelevel-prelude": "^4.0.0",
+    "purescript-unsafe-coerce": "^4.0.0",
+    "purescript-lists": "^5.4.0",
+    "purescript-arrays": "^5.2.1",
+    "purescript-ordered-collections": "^1.6.1"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^4.0.0"
+  }
+}
